@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <body>
+        <input type="text" id="todoInput" />
+        <button id="addBtn">Add</button>
+
+        <ul id="todoList"></ul>
+
+        <script>
+            let todos = [];
+
+            const input = document.getElementById("todoInput");
+            const addBtn = document.getElementById("addBtn");
+            const todoList = document.getElementById("todoList");
+
+            function renderTodos() {
+                todoList.innerHTML = "";
+
+                todos.forEach((todo, index) => {
+                    const li = document.createElement("li");
+
+                    li.innerHTML = `
+                                    ${todo}
+                                    <button onclick="deleteTodo(${index})">
+                                        Delete
+                                    </button>
+                                    `;
+
+                    todoList.appendChild(li);
+                });
+            }
+
+            function deleteTodo(index) {
+                todos.splice(index, 1);
+                renderTodos();
+            }
+
+            addBtn.addEventListener("click", () => {
+                const value = input.value.trim();
+
+                if (value === "") return;
+
+                todos.push(value);
+
+                renderTodos();
+
+                input.value = "";
+            });
+        </script>
+    </body>
+</html>
