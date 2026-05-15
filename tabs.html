@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <body>
+        <button class="tab" data-tab="home">Home</button>
+        <button class="tab" data-tab="about">About</button>
+        <button class="tab" data-tab="contact">Contact</button>
+
+        <div id="content"></div>
+
+        <script>
+            const content = document.getElementById("content");
+
+            const data = {
+                home: "Home Content",
+                about: "About Content",
+                contact: "Contact Content",
+            };
+
+            document.querySelectorAll(".tab").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const tab = btn.dataset.tab;
+
+                    content.innerText = data[tab];
+                });
+            });
+        </script>
+    </body>
+</html>
