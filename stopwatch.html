@@ -1,0 +1,39 @@
+  
+<!doctype html>
+<html>
+    <body>
+        <h1 id="time">0</h1>
+
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset">Reset</button>
+
+        <script>
+            let count = 0;
+            let timer = null;
+
+            const timeEl = document.getElementById("time");
+
+            document.getElementById("start").addEventListener("click", () => {
+                if (timer) return;
+
+                timer = setInterval(() => {
+                    count++;
+                    timeEl.innerText = count;
+                }, 1000);
+            });
+
+            document.getElementById("stop").addEventListener("click", () => {
+                clearInterval(timer);
+                timer = null;
+            });
+
+            document.getElementById("reset").addEventListener("click", () => {
+                clearInterval(timer);
+                timer = null;
+                count = 0;
+                timeEl.innerText = count;
+            });
+        </script>
+    </body>
+</html>
