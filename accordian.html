@@ -1,0 +1,27 @@
+
+
+
+<!doctype html>
+<html>
+    <body>
+        <button class="accordion">Section 1</button>
+        <div class="panel">Content 1</div>
+
+        <button class="accordion">Section 2</button>
+        <div class="panel">Content 2</div>
+
+        <script>
+            document.querySelectorAll(".accordion").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const panel = btn.nextElementSibling;
+
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                });
+            });
+        </script>
+    </body>
+</html> 
